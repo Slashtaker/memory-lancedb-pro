@@ -507,7 +507,7 @@ git clone https://github.com/CortexReach/memory-lancedb-pro-skill.git ~/.opencla
 | `llm.apiKey` | string | *（复用 `embedding.apiKey`）* | LLM 提供商 API Key |
 | `llm.model` | string | `openai/gpt-oss-120b` | LLM 模型名称 |
 | `llm.baseURL` | string | *（复用 `embedding.baseURL`）* | LLM API 端点 |
-| `llm.oauthProvider` | string | `openai-codex` | `llm.auth` 为 `oauth` 时使用的 OAuth provider id |
+| `llm.oauthProvider` | string |  | `llm.auth` 为 `oauth` 时使用的 OAuth provider id（由 `auth login` 写入，可选） |
 | `llm.oauthPath` | string | `~/.openclaw/.memory-lancedb-pro/oauth.json` | `llm.auth` 为 `oauth` 时使用的 OAuth token 文件 |
 | `llm.timeoutMs` | number | `30000` | LLM 请求超时（毫秒） |
 | `extractMinMessages` | number | `2` | 触发提取的最小消息数 |
