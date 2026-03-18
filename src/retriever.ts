@@ -680,15 +680,18 @@ export class MemoryRetriever {
         const controller = new AbortController();
         const timeoutMs = this.config.timeoutMs ?? 5000;
         const timeout = setTimeout(() => controller.abort(), timeoutMs);
+        let response: Response;
 
-        const response = await fetch(endpoint, {
-          method: "POST",
-          headers,
-          body: JSON.stringify(body),
-          signal: controller.signal,
-        });
-
-        clearTimeout(timeout);
+        try {
+          response = await fetch(endpoint, {
+            method: "POST",
+            headers,
+            body: JSON.stringify(body),
+            signal: controller.signal,
+          });
+        } finally {
+          clearTimeout(timeout);
+        }
 
         if (response.ok) {
           const data: unknown = await response.json();
